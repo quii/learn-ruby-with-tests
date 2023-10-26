@@ -9,8 +9,11 @@ class Repeater
 end
 
 class Repeat3Times
+  def initialize
+    @repeater = Repeater.new(3)
+  end
   def repeat(word)
-    word * 3
+    @repeater.repeat(word)
   end
 end
 
