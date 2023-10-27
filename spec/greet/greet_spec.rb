@@ -1,12 +1,12 @@
 class Greeter
-  @greetings = {
+  @@greetings = {
     :English => "Hello",
     :Spanish => "Hola",
     :French => "Bonjour"
   }
 
   def greet(name = "World", language = :English)
-    "#{@greetings[language]}, #{name}!"
+    "#{@@greetings[language]}, #{name}!"
   end
 end
 
