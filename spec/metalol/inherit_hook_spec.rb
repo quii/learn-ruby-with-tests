@@ -15,9 +15,13 @@ class SubClass < BaseClass
 
 end
 
-describe "the inherit hook" do
-  it "fuck off" do
-    expect(BaseClass.thesubclasses).to eq([SubClass])
+class ADifferentSubClass < BaseClass
+
+end
+
+describe "BaseClass" do
+  it "can track what has inherited it" do
+    expect(BaseClass.thesubclasses).to eq([SubClass, ADifferentSubClass])
   end
 end
 

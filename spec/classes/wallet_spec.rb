@@ -8,7 +8,7 @@ describe BadBank::Wallet do
   end
 
   context "when created" do
-    it "should have a balance of 10" do
+    it "should have an initial balance of 10 for these tests" do
       expect(subject).to have_balance(10)
     end
   end
