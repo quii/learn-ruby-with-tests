@@ -1,8 +1,7 @@
-require_relative '../../lib/wallet.rb'
-require_relative '../../lib/insufficient_funds_error.rb'
+require_relative '../../lib/bank/bank.rb'
 
-describe Wallet do
-  subject { Wallet.new(10) }
+describe BadBank::Wallet do
+  subject { BadBank::Wallet.new(10) }
 
   matcher :have_balance do |expected|
     match { |subject| subject.balance == expected}
@@ -30,13 +29,13 @@ describe Wallet do
 
   context "when withdrawing too much" do
     it "should raise an error" do
-      expect { subject.withdraw(11) }.to raise_error(InsufficientFundsError)
+      expect { subject.withdraw(11) }.to raise_error(BadBank::InsufficientFundsError)
     end
   end
 
   context "two wallets with the same balance are equal" do
     it "is not a bank you should work with tbh" do
-      expect(subject).to eq(Wallet.new(10))
+      expect(subject).to eq(BadBank::Wallet.new(10))
     end
   end
 end
