@@ -1,24 +1,5 @@
-
-class Wallet
-  attr_reader :balance
-
-  def initialize(balance)
-    @balance = balance
-  end
-
-  def deposit(amount)
-    @balance += amount
-  end
-
-  def withdraw(amount)
-    raise InsufficientFundsError if amount > @balance
-    @balance -= amount
-  end
-end
-
-class InsufficientFundsError < StandardError; end
-
-RSpec.
+require_relative '../../lib/wallet.rb'
+require_relative '../../lib/insufficient_funds_error.rb'
 
 describe Wallet do
   subject { Wallet.new(10) }
@@ -50,6 +31,12 @@ describe Wallet do
   context "when withdrawing too much" do
     it "should raise an error" do
       expect { subject.withdraw(11) }.to raise_error(InsufficientFundsError)
+    end
+  end
+
+  context "two wallets with the same balance are equal" do
+    it "is not a bank you should work with tbh" do
+      expect(subject).to eq(Wallet.new(10))
     end
   end
 end
