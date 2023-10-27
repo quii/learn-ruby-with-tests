@@ -1,14 +1,4 @@
-class Greeter
-  @@greetings = {
-    :English => "Hello",
-    :Spanish => "Hola",
-    :French => "Bonjour"
-  }
-
-  def greet(name = "World", language = :English)
-    "#{@@greetings[language]}, #{name}!"
-  end
-end
+require_relative '../../lib/greet/greeter.rb'
 
 describe "Greeter" do
   subject { Greeter.new }
