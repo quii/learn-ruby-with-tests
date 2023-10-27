@@ -1,32 +1,5 @@
-
-class Rectangle
-  def initialize(length, width)
-    @length = length
-    @width = width
-  end
-
-  def perimeter
-    2 * (@length + @width)
-  end
-
-  def area
-    @length * @width
-  end
-end
-
-class Circle
-  def initialize(radius)
-    @radius = radius
-  end
-
-  def perimeter
-    2 * Math::PI * @radius
-  end
-
-  def area
-    Math::PI * @radius ** 2
-  end
-end
+require_relative '../../lib/rectangle.rb'
+require_relative '../../lib/circle.rb'
 
 describe "Shapes" do
 

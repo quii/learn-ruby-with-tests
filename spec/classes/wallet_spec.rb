@@ -23,23 +23,27 @@ RSpec.
 describe Wallet do
   subject { Wallet.new(10) }
 
+  matcher :have_balance do |expected|
+    match { |subject| subject.balance == expected}
+  end
+
   context "when created" do
     it "should have a balance of 10" do
-      expect(subject.balance).to eq(10)
+      expect(subject).to have_balance(10)
     end
   end
 
   context "when depositing" do
     it "should increase the balance" do
       subject.deposit(10)
-      expect(subject.balance).to eq(20)
+      expect(subject).to have_balance(20)
     end
   end
 
   context "when withdrawing" do
     it "should decrease the balance" do
       subject.withdraw(10)
-      expect(subject.balance).to eq(0)
+      expect(subject).to have_balance(0)
     end
   end
 
