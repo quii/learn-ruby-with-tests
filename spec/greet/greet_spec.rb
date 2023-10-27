@@ -1,4 +1,5 @@
 require_relative '../../lib/greet/greeter.rb'
+require_relative '../../lib/greet/greeter2.rb'
 require 'securerandom'
 
 shared_examples "a greeter" do
