@@ -19,12 +19,10 @@ shared_examples "a greeter" do
   end
 end
 
-describe "Greeter" do
-  subject { Greeter.new }
+describe Greeter do
   it_behaves_like "a greeter"
 end
 
-describe "The greeter module" do
-  subject { Greeter2}
+describe Greeter2 do
   it_behaves_like "a greeter"
 end
