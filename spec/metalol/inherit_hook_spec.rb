@@ -6,7 +6,7 @@ class BaseClass
     @@subclasses << subclass
   end
 
-  def self.thesubclasses
+  def self.the_sub_classes
     @@subclasses
   end
 end
@@ -21,7 +21,7 @@ end
 
 describe "BaseClass" do
   it "can track what has inherited it" do
-    expect(BaseClass.thesubclasses).to eq([SubClass, ADifferentSubClass])
+    expect(BaseClass.the_sub_classes).to eq([SubClass, ADifferentSubClass])
   end
 end
 

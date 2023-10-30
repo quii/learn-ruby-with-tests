@@ -1,6 +1,6 @@
 require_relative '../../lib/bank/bank.rb'
 
-describe BadBank::Wallet do
+describe "Bad bank" do
   subject { BadBank::Wallet.new(10) }
 
   matcher :have_balance do |expected|
