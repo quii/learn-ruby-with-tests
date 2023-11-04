@@ -15,15 +15,17 @@ shared_context "in English" do
 end
 
 shared_examples "a greeter" do
-  let(:name) { nil }
-  let(:language) { nil }
 
   def greet
     subject.greet(name, language)
   end
 
   context "with no name" do
+    let(:name) { nil }
+
     context "with no language" do
+      let(:language) { nil }
+
       it "should greet the world in English" do
         expect(greet).to eq("Hello, World!")
       end
