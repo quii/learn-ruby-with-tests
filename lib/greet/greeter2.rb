@@ -9,6 +9,9 @@ module Greeter2
     if name.nil?
       name = "World"
     end
+    if language.nil?
+      language = :English
+    end
     "#{GREETINGS[language]}, #{name}!"
   end
 end

@@ -3,48 +3,70 @@ require_relative '../../lib/greet/greeter2.rb'
 require 'securerandom'
 
 shared_examples "a greeter" do
-  let(:name) { SecureRandom.hex }
-  let(:language) { :English }
+  let(:name) { nil }
+  let(:language) { nil }
 
   def greet
     subject.greet(name, language)
   end
 
-  context "with no name set" do
-    let(:name) { nil }
-
-    it "should greet the world in English" do
-      expect(greet).to eq("Hello, World!")
-    end
-  end
-
-  context "with English set" do
-    it "should greet the person in English" do
-      expect(greet).to eq("Hello, #{name}!")
-    end
-  end
-
-  context "with spanish set" do
-    let(:language) { :Spanish }
-
-    it "should greet the person in spanish" do
-      expect(greet).to eq("Hola, #{name}!")
+  context "with no name" do
+    context "with no language" do
+      it "should greet the world in English" do
+        expect(greet).to eq("Hello, World!")
+      end
     end
 
-    context "with name set to Chris" do
-      let(:name) { "Chris" }
+    context "with the language set to Spanish" do
+      let(:language) { :Spanish }
 
-      it "should greet Chris, in spanish" do
-        expect(greet).to eq("Hola, Chris!")
+      it "should greet the world in Spanish" do
+        expect(greet).to eq("Hola, World!")
+      end
+    end
+
+    context "with the language set to French" do
+      let(:language) { :French }
+
+      it "should greet the world in French" do
+        expect(greet).to eq("Bonjour, World!")
       end
     end
   end
 
-  context "with french set" do
-    let(:language) { :French }
+  context "with a name set" do
+    let(:name) { SecureRandom.hex }
 
-    it "should greet the person in french" do
-      expect(greet).to eq("Bonjour, #{name}!")
+    context "with language set to English" do
+      let(:language) { :English }
+
+      it "should greet the person in English" do
+        expect(greet).to eq("Hello, #{name}!")
+      end
+
+      context "with name set to Chris" do
+        let(:name) { "Chris" }
+
+        it "should greet Chris in English" do
+          expect(greet).to eq("Hello, Chris!")
+        end
+      end
+    end
+
+    context "with language set to Spanish" do
+      let(:language) { :Spanish }
+
+      it "should greet the person in Spanish" do
+        expect(greet).to eq("Hola, #{name}!")
+      end
+    end
+
+    context "with language set to French" do
+      let(:language) { :French }
+
+      it "should greet the person in French" do
+        expect(greet).to eq("Bonjour, #{name}!")
+      end
     end
   end
 end

@@ -3,6 +3,9 @@ class Greeter
     if name.nil?
       name = "World"
     end
+    if language.nil?
+      language = :English
+    end
     "#{get_greeting(language)}, #{name}!"
   end
 
