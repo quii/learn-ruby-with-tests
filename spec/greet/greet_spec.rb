@@ -2,6 +2,18 @@ require_relative '../../lib/greet/greeter.rb'
 require_relative '../../lib/greet/greeter2.rb'
 require 'securerandom'
 
+shared_context "in Spanish" do
+  let(:language) { :Spanish }
+end
+
+shared_context "in French" do
+  let(:language) { :French }
+end
+
+shared_context "in English" do
+  let(:language) { :English }
+end
+
 shared_examples "a greeter" do
   let(:name) { nil }
   let(:language) { nil }
@@ -18,7 +30,7 @@ shared_examples "a greeter" do
     end
 
     context "with the language set to Spanish" do
-      let(:language) { :Spanish }
+      include_context "in Spanish"
 
       it "should greet the world in Spanish" do
         expect(greet).to eq("Hola, World!")
@@ -26,7 +38,7 @@ shared_examples "a greeter" do
     end
 
     context "with the language set to French" do
-      let(:language) { :French }
+      include_context "in French"
 
       it "should greet the world in French" do
         expect(greet).to eq("Bonjour, World!")
@@ -38,7 +50,7 @@ shared_examples "a greeter" do
     let(:name) { SecureRandom.hex }
 
     context "with language set to English" do
-      let(:language) { :English }
+      include_context "in English"
 
       it "should greet the person in English" do
         expect(greet).to eq("Hello, #{name}!")
@@ -54,7 +66,7 @@ shared_examples "a greeter" do
     end
 
     context "with language set to Spanish" do
-      let(:language) { :Spanish }
+      include_context "in Spanish"
 
       it "should greet the person in Spanish" do
         expect(greet).to eq("Hola, #{name}!")
@@ -62,7 +74,7 @@ shared_examples "a greeter" do
     end
 
     context "with language set to French" do
-      let(:language) { :French }
+      include_context "in French"
 
       it "should greet the person in French" do
         expect(greet).to eq("Bonjour, #{name}!")
