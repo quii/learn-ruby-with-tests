@@ -10,7 +10,15 @@ shared_examples "a greeter" do
     subject.greet(name, language)
   end
 
-  context "with no language set" do
+  context "with no name set" do
+    let(:name) { nil }
+
+    it "should greet the world in English" do
+      expect(greet).to eq("Hello, World!")
+    end
+  end
+
+  context "with English set" do
     it "should greet the person in English" do
       expect(greet).to eq("Hello, #{name}!")
     end

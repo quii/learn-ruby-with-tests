@@ -1,5 +1,8 @@
 class Greeter
   def greet(name = "World", language = :English)
+    if name.nil?
+      name = "World"
+    end
     "#{get_greeting(language)}, #{name}!"
   end
 
