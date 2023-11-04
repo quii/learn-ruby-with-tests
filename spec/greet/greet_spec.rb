@@ -22,6 +22,7 @@ shared_examples "a greeter" do
     it "should greet the person in spanish" do
       expect(greet).to eq("Hola, #{name}!")
     end
+
     context "with name set to Chris" do
       let(:name) { "Chris" }
 
