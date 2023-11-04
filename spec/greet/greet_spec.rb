@@ -15,10 +15,7 @@ shared_context "in English" do
 end
 
 shared_examples "a greeter" do
-
-  def greet
-    subject.greet(name, language)
-  end
+  let(:greet) { subject.greet(name, language) }
 
   context "with no name" do
     let(:name) { nil }
