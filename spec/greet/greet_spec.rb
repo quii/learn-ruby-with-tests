@@ -3,20 +3,36 @@ require_relative '../../lib/greet/greeter2.rb'
 require 'securerandom'
 
 shared_examples "a greeter" do
-  it "should greet the world" do
-    expect(subject.greet).to eq("Hello, World!")
+  let(:name) { SecureRandom.hex }
+  let(:language) { :English }
+  def greet
+    subject.greet(name, language)
   end
 
-  it "should greet a specific person" do
-    expect(subject.greet("Alice")).to eq("Hello, Alice!")
+  context "with no language set" do
+    it "should greet the person in English" do
+      expect(greet).to eq("Hello, #{name}!")
+    end
   end
 
-  it "should greet a specific person in spanish" do
-    expect(subject.greet("Alice", :Spanish)).to eq("Hola, Alice!")
+  context "with spanish set" do
+    let(:language) { :Spanish }
+    it "should greet the person in spanish" do
+      expect(greet).to eq("Hola, #{name}!")
+    end
+    context "with name set to Chris" do
+      let(:name) { "Chris" }
+      it "should greet Chris, in spanish" do
+        expect(greet).to eq("Hola, Chris!")
+      end
+    end
   end
 
-  it "should greet someone in french" do
-    expect(subject.greet("Alice", :French)).to eq("Bonjour, Alice!")
+  context "with french set" do
+    let(:language) { :French }
+    it "should greet the person in french" do
+      expect(greet).to eq("Bonjour, #{name}!")
+    end
   end
 end
 
