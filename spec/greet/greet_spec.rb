@@ -38,7 +38,7 @@ shared_examples "a greeter" do |greeter|
     end
   end
 
-  context "with a name set" do
+  context "with a name set to Pepper" do
     let(:name) { "Pepper" }
 
     context "with language set to English" do
