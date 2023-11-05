@@ -19,7 +19,7 @@ end
 
 class MapRepeater
   def repeat(word)
-    [*1..3].map { word }.join
+    1.upto(3).map { word }.join
   end
 end
 
