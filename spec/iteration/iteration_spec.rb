@@ -17,6 +17,12 @@ class Repeat3Times
   end
 end
 
+class MapRepeater
+  def repeat(word)
+    [*1..3].map { word }.join
+  end
+end
+
 shared_examples "a repeater" do
   it "should repeat the word 3 times" do
     expect(subject.repeat("Hello")).to eq("HelloHelloHello")
@@ -31,6 +37,10 @@ end
 
 # notice you don't have to init the subject, it just calls .new for you
 describe Repeat3Times do
+  it_behaves_like "a repeater"
+end
+
+describe MapRepeater do
   it_behaves_like "a repeater"
 end
 

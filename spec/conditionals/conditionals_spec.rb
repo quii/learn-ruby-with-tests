@@ -4,16 +4,20 @@ def stroke_pepper?(mood)
   end
 end
 
-describe "unless" do
+describe "should you stroke pepper" do
   subject { stroke_pepper?(mood) }
 
-  context "when pepper is angry" do
-    let(:mood) { "angry" }
-    it { is_expected.to be_falsey }
+  matcher :should_stroke_her do
+    match { |subject| subject == true }
   end
 
-  context "when pepper is not angry" do
+  context "pepper is angry" do
+    let(:mood) { "angry" }
+    it { is_expected.to_not should_stroke_her }
+  end
+
+  context "pepper is not angry" do
     let(:mood) { "happy" }
-    it { is_expected.to be_truthy }
+    it { is_expected.to should_stroke_her }
   end
 end
