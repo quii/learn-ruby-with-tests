@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class ThirtiesFinderWithPatternMatching
+class PatternMatchingExample
 def find_thirties(people)
   people.map do |person|
     case person
@@ -47,8 +47,8 @@ shared_examples "filtering" do |filterer|
   end
 end
 
-describe ThirtiesFinderWithPatternMatching do
-  it_behaves_like "filtering" , ThirtiesFinderWithPatternMatching.new
+describe PatternMatchingExample do
+  it_behaves_like "filtering" , PatternMatchingExample.new
 end
 
 describe ThirtiesFinderWithFilter do

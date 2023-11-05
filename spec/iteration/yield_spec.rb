@@ -5,9 +5,9 @@ end
 
 describe "yield" do
   it "calls the block for each yield in high_five" do
-    mySpy = spy("mySpy")
-    high_five { |thing| mySpy.call(thing) }
-    expect(mySpy).to have_received(:call).with("high")
-    expect(mySpy).to have_received(:call).with("five")
+    my_spy = spy("my_spy")
+    high_five { |thing| my_spy.call(thing) }
+    expect(my_spy).to have_received(:call).with("high")
+    expect(my_spy).to have_received(:call).with("five")
   end
 end
