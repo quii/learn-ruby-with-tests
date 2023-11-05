@@ -1,5 +1,5 @@
-require_relative '../../lib/rectangle.rb'
-require_relative '../../lib/circle.rb'
+require_relative '../../lib/shapes/rectangle.rb'
+require_relative '../../lib/shapes/circle.rb'
 
 describe "Shapes" do
 

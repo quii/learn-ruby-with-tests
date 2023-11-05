@@ -1,7 +1,6 @@
 class Rectangle
   def initialize(length, width)
-    @length = length
-    @width = width
+    @length, @width = length, width
   end
 
   def perimeter
