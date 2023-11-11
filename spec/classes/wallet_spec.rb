@@ -37,7 +37,10 @@ describe "Bad bank" do
     end
   end
 
-  context "two wallets with the same balance are equal" do
+  context "using comparable" do
+    it "can compare two wallets" do
+      expect(subject).to be > BadBank::Wallet.new(5)
+    end
     it "is not a bank you should work with tbh" do
       expect(subject).to eq(BadBank::Wallet.new(10))
     end

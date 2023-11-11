@@ -2,14 +2,16 @@ module BadBank
   class InsufficientFundsError < StandardError; end
 
   class Wallet
+    include Comparable
+
     attr_reader :balance
 
     def initialize(balance)
       @balance = balance
     end
 
-    def ==(other)
-      @balance == other.balance
+    def <=>(other)
+      balance <=> other.balance
     end
 
     def deposit(amount)
