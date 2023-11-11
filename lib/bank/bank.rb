@@ -16,9 +16,17 @@ module BadBank
       @balance += amount
     end
 
+    def +(amount)
+      deposit(amount)
+    end
+
     def withdraw(amount)
       raise InsufficientFundsError if amount > @balance
       @balance -= amount
+    end
+
+    def -(amount)
+      withdraw(amount)
     end
   end
 end

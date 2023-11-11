@@ -8,23 +8,27 @@ describe "Bad bank" do
   end
 
   context "when created" do
-    it "should have an initial balance of 10 for these tests" do
-      expect(subject).to have_balance(10)
-    end
+    it { is_expected.to have_balance(10)}
   end
 
   context "when depositing" do
-    it "should increase the balance" do
-      subject.deposit(10)
-      expect(subject).to have_balance(20)
-    end
+    before { subject.deposit(10) }
+    it { is_expected.to have_balance(20)}
+  end
+
+  context "when depositing with +" do
+    before { subject + 10 }
+    it { is_expected.to have_balance(20)}
   end
 
   context "when withdrawing" do
-    it "should decrease the balance" do
-      subject.withdraw(10)
-      expect(subject).to have_balance(0)
-    end
+    before { subject.withdraw(10) }
+    it { is_expected.to have_balance(0)}
+  end
+
+  context "when withdrawing with -" do
+    before { subject - 10 }
+    it { is_expected.to have_balance(0)}
   end
 
   context "when withdrawing too much" do
